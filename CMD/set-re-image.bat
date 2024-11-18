@@ -53,6 +53,15 @@ if errorlevel 1 (
     exit /b
 )
 
+:: Delete the mount folder
+echo Deleting the mount folder...
+rmdir /s /q "%MOUNT_DIR%"
+if errorlevel 1 (
+    echo ERROR: Failed to delete the mount folder
+    pause
+    exit /b
+)
+
 :: Set the recovery image path
 echo Setting recovery image path...
 reagentc /setreimage /path "%WINRE_DIR%"
