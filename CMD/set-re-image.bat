@@ -46,7 +46,7 @@ if errorlevel 1 (
 
 :: Unmount the image
 echo Unmounting the image...
-dism /unmount-image /mountdir:"%MOUNT_DIR%" /discard"
+dism /unmount-image /mountdir:"%MOUNT_DIR%" /discard
 if errorlevel 1 (
     echo ERROR: Failed to unmount image
     pause
