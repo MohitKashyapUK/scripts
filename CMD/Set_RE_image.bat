@@ -1,4 +1,8 @@
 @echo off
+
+:: To begin with this. You need to download the Windows ISO image, and then extract 'install.wim' file from the image. And paste that file to Downloads folder.
+:: Now, you are done. Start this script and wait. :)
+
 :: Set variables
 set "WIM_PATH=C:\Users\%USERNAME%\Downloads\install.wim"
 set "MOUNT_DIR=C:\mount"
