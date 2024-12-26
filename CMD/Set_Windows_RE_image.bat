@@ -1,7 +1,7 @@
 @echo off
 
 :: To begin with this. You need to download the Windows ISO image, and then extract 'install.wim' file from the image. And paste that file to Downloads folder.
-:: Now, you are done. Start this script and wait. :)
+:: Now, you are done. Start this script and wait. :) *Make sure the terminal is running with administrator privileges*
 
 :: Set variables
 set "WIM_PATH=C:\Users\%USERNAME%\Downloads\install.wim"
