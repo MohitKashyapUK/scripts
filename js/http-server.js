@@ -3,7 +3,7 @@ const http = require("node:http");
 const server = http.createServer((req, res) => {
   res.writeHead(200, {'Content-Type': 'application/json'});
   /*
-    code...
+    Yah code snippet hai, Node JS ke local server ki.
   */
 });
 
