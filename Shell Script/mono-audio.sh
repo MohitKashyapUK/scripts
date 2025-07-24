@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Run this script using this command:
+# curl -fsSL https://raw.githubusercontent.com/MohitKashyapUK/scripts/main/Shell%20Script/mono-audio.sh | bash
+
 set -e
 
 mkdir -p ~/.config/pipewire/pipewire.conf.d
