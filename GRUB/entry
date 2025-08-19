@@ -6,16 +6,16 @@ exec tail -n +3 $0
 
 menuentry "Arch" {
     # === CONFIGURABLE VARIABLES ===
-    set isofile="/OS/cachyos-desktop-linux-250713.iso"
-    set partition="(hd0,3)"
-    set kernel_path="/arch/boot/x86_64/vmlinuz-linux-cachyos"
-    set initrd_path="/arch/boot/x86_64/initramfs-linux-cachyos.img"
+    set isofile="/OS/cachyos-desktop-linux-250713.iso" # ISO file location.
+    set partition="(hd0,3)" # 0 means first device, 3rd means partition
+    set isodevice="/dev/sda3" # Partition where ISO is located.
+    set kernel_path="/arch/boot/x86_64/vmlinuz-linux-cachyos" # Kernel file
+    set initrd_path="/arch/boot/x86_64/initramfs-linux-cachyos.img" # RAM filesystem
  
     # === BOOT SETUP ===
     loopback loop $partition$isofile
     # === Arch ===
-    linux (loop)$kernel_path img_dev=/dev/sda3 img_loop=$isofile rw earlymodules=loop cow_spacesize=4G
-    # Update this                    ^^^^^^^^^
+    linux (loop)$kernel_path img_dev=$isodevice img_loop=$isofile rw earlymodules=loop cow_spacesize=4G
     initrd (loop)$initrd_path
 }
 
