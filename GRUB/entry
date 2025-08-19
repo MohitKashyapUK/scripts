@@ -21,10 +21,10 @@ menuentry "Arch" {
 
 menuentry "Ubuntu/Debian" {
     # === CONFIGURABLE VARIABLES ===
-    set isofile="/OS/cachyos-desktop-linux-250713.iso"
+    set isofile="/ubuntu.iso"
     set partition="(hd0,3)"
-    set kernel_path="/arch/boot/x86_64/vmlinuz-linux-cachyos"
-    set initrd_path="/arch/boot/x86_64/initramfs-linux-cachyos.img"
+    set kernel_path="/casper/vmlinuz"
+    set initrd_path="/casper/initrd"
  
     # === BOOT SETUP ===
     loopback loop $partition$isofile
