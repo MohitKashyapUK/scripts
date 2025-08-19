@@ -29,6 +29,6 @@ menuentry "Ubuntu/Debian" {
     # === BOOT SETUP ===
     loopback loop $partition$isofile
     # === Ubuntu/Debian ===
-    # linux (loop)$kernel_path boot=casper iso-scan/filename=$isofile noeject noprompt splash --
+    linux (loop)$kernel_path boot=casper iso-scan/filename=$isofile noeject noprompt splash --
     initrd (loop)$initrd_path
 }
