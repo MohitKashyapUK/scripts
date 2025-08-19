@@ -10,7 +10,7 @@ menuentry "Arch" {
     set partition="(hd0,3)" # 0 means first device, 3rd means partition
     set isodevice="/dev/sda3" # Partition where ISO is located.
     set kernel_path="/arch/boot/x86_64/vmlinuz-linux-cachyos" # Kernel file
-    set initrd_path="/arch/boot/x86_64/initramfs-linux-cachyos.img" # RAM filesystem
+    set initrd_path="/arch/boot/x86_64/initramfs-linux-cachyos.img" # initial RAM filesystem
  
     # === BOOT SETUP ===
     loopback loop $partition$isofile
