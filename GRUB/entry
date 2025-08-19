@@ -17,5 +17,6 @@ menuentry "OS name" {
     # linux (loop)$kernel_path boot=casper iso-scan/filename=$isofile noeject noprompt splash --
     # === Arch ===
     linux (loop)$kernel_path img_dev=/dev/sda3 img_loop=$isofile rw earlymodules=loop cow_spacesize=4G
+    # Update this                    ^^^^^^^^^
     initrd (loop)$initrd_path
 }
