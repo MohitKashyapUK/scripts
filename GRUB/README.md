@@ -8,8 +8,8 @@ This guide will help you create a custom menu entry in your GRUB bootloader to b
 
 Before using the code, you **must** update the four variables in the `=== CONFIGURABLE VARIABLES ===` section to match your system's setup.
 
-*   `set isofile="/OS/cachyos-desktop-linux-250713.iso"`: Replace this with the correct path to your ISO file on your hard drive.
-*   `set partition="(hd0,3)"`: Replace this with the partition where your ISO file is stored. GRUB names partitions differently (e.g., the third partition on the first disk, `/dev/sda3`, is typically `(hd0,3)`).
+*   `set isofile="/OS/cachyos-desktop-linux-250713.iso"`: Replace this with the correct path to your ISO file on your partition.
+*   `set partition="(hdX,Y)"`: Replace this with the partition where your ISO file is stored. GRUB names partitions differently (e.g. `(hd0,3)`).
 *   `set kernel_path="/arch/boot/x86_64/vmlinuz-linux-cachyos"`: Set the correct path to the kernel *inside* the ISO file.
 *   `set initrd_path="/arch/boot/x86_64/initramfs-linux-cachyos.img"`: Set the correct path to the initrd image *inside* the ISO file.
 
@@ -37,6 +37,8 @@ menuentry "OS name (Arch-based)" {
 #### Optional: Increasing Temporary Space for Arch
 
 When you run a live OS, changes are stored in RAM in a temporary filesystem ("copy-on-write" or "cow space"). If you need more space for tasks like installing large applications, you can expand this temporary storage.
+
+***`If you are having any problem while installing the OS, then you can try this code.`***
 
 To do this, add the `cow_spacesize` option to the end of the `linux` line. Here is how you would modify the Arch Linux code block to allocate a 4GB temporary space:
 
