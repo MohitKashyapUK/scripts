@@ -46,8 +46,6 @@ menuentry "Fedora" {
 
     # === BOOT SETUP ===
     loopback loop $partition$isofile
-
-    # === Nobara (Fedora-based) ===
     linux (loop)$kernel_path \
         iso-scan/filename=$isofile root=live:CDLABEL=$isolabel \
         rd.live.image quiet splash
