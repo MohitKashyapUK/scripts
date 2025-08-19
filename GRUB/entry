@@ -14,7 +14,6 @@ menuentry "Arch" {
  
     # === BOOT SETUP ===
     loopback loop $partition$isofile
-    # === Arch ===
     linux (loop)$kernel_path \
         img_dev=$isodevice img_loop=$isofile rw earlymodules=loop \
         cow_spacesize=4G copytoram \
@@ -31,7 +30,6 @@ menuentry "Ubuntu/Debian" {
  
     # === BOOT SETUP ===
     loopback loop $partition$isofile
-    # === Ubuntu/Debian ===
     linux (loop)$kernel_path boot=casper iso-scan/filename=$isofile noeject noprompt splash --
     initrd (loop)$initrd_path
 }
