@@ -13,9 +13,9 @@ menuentry "OS name" {
  
     # === BOOT SETUP ===
     loopback loop $partition$isofile
-    # Ubuntu/Debian
+    # === Ubuntu/Debian ===
     # linux (loop)$kernel_path boot=casper iso-scan/filename=$isofile noeject noprompt splash --
-    # Arch
+    # === Arch ===
     linux (loop)$kernel_path img_dev=$partition img_loop=$isofile earlymodules=loop
     initrd (loop)$initrd_path
 }
