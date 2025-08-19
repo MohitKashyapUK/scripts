@@ -1,0 +1,21 @@
+#!/bin/sh
+exec tail -n +3 $0
+# This file provides an easy way to add custom menu entries.  Simply type the
+# menu entries you want to add after this comment.  Be careful not to change
+# the 'exec tail' line above.
+
+menuentry "OS name" {
+    # === CONFIGURABLE VARIABLES ===
+    set isofile="/OS/cachyos-desktop-linux-250713.iso"
+    set partition="(hd0,3)"
+    set kernel_path="/arch/boot/x86_64/vmlinuz-linux-cachyos"
+    set initrd_path="/arch/boot/x86_64/initramfs-linux-cachyos.img"
+ 
+    # === BOOT SETUP ===
+    loopback loop $partition$isofile
+    # Ubuntu/Debian
+    # linux (loop)$kernel_path boot=casper iso-scan/filename=$isofile noeject noprompt splash --
+    # Arch
+    linux (loop)$kernel_path img_dev=$partition img_loop=$isofile earlymodules=loop
+    initrd (loop)$initrd_path
+}
