@@ -15,7 +15,9 @@ menuentry "Arch" {
     # === BOOT SETUP ===
     loopback loop $partition$isofile
     # === Arch ===
-    linux (loop)$kernel_path img_dev=$isodevice img_loop=$isofile rw earlymodules=loop cow_spacesize=4G
+    linux (loop)$kernel_path img_dev=$isodevice img_loop=$isofile rw earlymodules=loop \
+        cow_spacesize=4G copytoram \
+        quiet loglevel=0 systemd.show_status=0 rd.udev.log_level=0 splash vt.global_cursor_default=0
     initrd (loop)$initrd_path
 }
 
