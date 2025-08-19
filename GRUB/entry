@@ -35,3 +35,21 @@ menuentry "Ubuntu/Debian" {
     linux (loop)$kernel_path boot=casper iso-scan/filename=$isofile noeject noprompt splash --
     initrd (loop)$initrd_path
 }
+
+menuentry "Fedora" {
+    # === CONFIGURABLE VARIABLES ===
+    set isofile="/OS/nobara-kde.iso" # ISO file location
+    set partition="(hd0,3)" # 0 means first device, 3 means 3rd partition
+    set isolabel="Nobara-42" # ISO file's label, command `isoinfo -d -i <ISO_file> | grep "Volume id"`
+    set kernel_path="/images/pxeboot/vmlinuz" # Kernel file
+    set initrd_path="/images/pxeboot/initrd.img" # Initial RAM filesystem
+
+    # === BOOT SETUP ===
+    loopback loop $partition$isofile
+
+    # === Nobara (Fedora-based) ===
+    linux (loop)$kernel_path \
+        iso-scan/filename=$isofile root=live:CDLABEL=$isolabel \
+        rd.live.image quiet splash
+    initrd (loop)$initrd_path
+}
