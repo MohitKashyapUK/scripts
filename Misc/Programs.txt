@@ -1,0 +1,8 @@
+nodejs-lts
+python
+vscode
+gemini
+vlc
+7zip
+fdm
+gparted
