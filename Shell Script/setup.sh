@@ -56,3 +56,9 @@ echo ""
 echo "Disabling ModemManager..."
 sudo systemctl disable ModemManager
 echo "ModemManager disabled. 👍"
+
+sudo systemctl stop paccache.timer
+sudo systemctl disable paccache.timer
+
+sudo systemctl stop reflector.timer
+sudo systemctl disable reflector.timer
