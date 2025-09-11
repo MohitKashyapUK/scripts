@@ -7,5 +7,5 @@
 ### '--skip-download', not going to download any video
 
 yt-dlp --quiet --console-title --progress --no-warnings --output "%(playlist_title)s/%(title)s.%(ext)s" -f "bv[height<=1080]+ba" --print "%(playlist_index)s. %(title)s" "https://www.youtube.com/playlist?list=PLYdSUCkqdg67qnz3MEo0NsaM65HjAKsIm"
-yt-dlp --quiet --console-title --progress --no-warnings --no-playlist --output "%(title)s.%(ext)s" -f "bv[height<=1080]+ba" --print "%(playlist_index)s. %(title)s" "https://www.youtube.com/watch?v=eYctE_enPkk&list=PLYdSUCkqdg67qnz3MEo0NsaM65HjAKsIm"
+yt-dlp --quiet --console-title --progress --no-warnings --no-playlist --output "%(title)s.%(ext)s" -f "bv[height<=1080]+ba" --print title "https://www.youtube.com/watch?v=eYctE_enPkk&list=PLYdSUCkqdg67qnz3MEo0NsaM65HjAKsIm"
 yt-dlp --skip-download --print title "https://www.youtube.com/watch?v=xXHc_lH8-yU"
