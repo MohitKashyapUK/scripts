@@ -8,9 +8,7 @@ console.log(bottom_results.replace(/\n/g, ' '));
   else if (value >= 13 && value <= 24) return 2
   else if (value >= 25 && value <= 36) return 3
   else return 0
-}).reverse().toString().replaceAll(",", "");
-
-console.log(results_string); */
+}).reverse().toString().replaceAll(",", ""); */
 
 let results_string = "";
 for (let x=0, arr=bottom_results.split('\n').reverse(); x < arr.length; x++) {
@@ -20,3 +18,5 @@ for (let x=0, arr=bottom_results.split('\n').reverse(); x < arr.length; x++) {
   else if (value >= 25 && value <= 36) results_string += "3";
   else results_string += "0";
 }
+
+console.log(results_string);
