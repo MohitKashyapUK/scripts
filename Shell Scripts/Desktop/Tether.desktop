@@ -1,0 +1,16 @@
+[Desktop Entry]
+Comment[en_IN]=
+Comment=
+Exec="/home/mohit/Documents/GitHub/scripts/Shell Scripts/Scripts/Connect-tether.sh"
+GenericName[en_IN]=
+GenericName=
+MimeType=
+Name[en_IN]=Tethering
+Name=Tethering
+Path=
+StartupNotify=true
+Terminal=true
+TerminalOptions=
+Type=Application
+X-KDE-SubstituteUID=false
+X-KDE-Username=
