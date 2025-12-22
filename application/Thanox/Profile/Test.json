@@ -1,0 +1,11 @@
+[
+    {
+        "name": "Test 2",
+        "description": "",
+        "priority": 1,
+        "condition": "true && pkgName == \"net.one97.paytm\"",
+        "actions": [
+            "ui.showShortToast(pkgName);"
+        ]
+    }
+]
