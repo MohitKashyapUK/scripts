@@ -9,7 +9,7 @@ curl -fsSL https://raw.githubusercontent.com/MohitKashyapUK/scripts/main/Shell%2
 
 ## 2. HDAJackRetask Setup
 
-1. HDAJackRetask app download karein (package manager ya official source se).
+1. HDAJackRetask app download karein [(Process here)](https://github.com/MohitKashyapUK/scripts/blob/cf363c1d728b196b31f5f685aae024aa9e905251/Linux%20Setup/HDAJackRetask%20Installation.md)
 
 
 2. App open karke Front Panel Jack Detection ko disable/turn off karein.
