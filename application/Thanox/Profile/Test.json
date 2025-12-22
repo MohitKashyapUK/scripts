@@ -5,7 +5,7 @@
         "priority": 1,
         "condition": "true && pkgName == \"net.one97.paytm\"",
         "actions": [
-            "ui.showShortToast(pkgName);"
+            "ui.showShortToast(\"Task removed: \" + taskRemoved + \"\\nActivity created: \" + activityCreated + \"\\nActivity resumed:\" + activityResumed + \"\\nFront Activity Changed: \" + frontActivityChanged);"
         ]
     }
 ]
