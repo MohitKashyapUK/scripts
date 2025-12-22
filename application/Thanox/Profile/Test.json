@@ -3,9 +3,10 @@
         "name": "Test 2",
         "description": "",
         "priority": 1,
+        "delay": 5000,
         "condition": "true && pkgName == \"net.one97.paytm\"",
         "actions": [
-            "ui.showShortToast(\"Task removed: \" + taskRemoved + \"\\nActivity created: \" + activityCreated + \"\\nActivity resumed:\" + activityResumed + \"\\nFront Activity Changed: \" + frontActivityChanged);"
+            "!task.hasTaskFromPackage(pkgName) && ui.showShortToast(\"Task removed: \" + taskRemoved + \"\\nActivity created: \" + activityCreated + \"\\nActivity resumed:\" + activityResumed + \"\\nFront Activity Changed: \" + frontActivityChanged);"
         ]
     }
 ]
