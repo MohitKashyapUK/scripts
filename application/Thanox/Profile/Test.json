@@ -10,3 +10,15 @@
         ]
     }
 ]
+
+[
+    {
+        "name": "Test 2",
+        "description": "",
+        "priority": 1,
+        "condition": "true",
+        "actions": [
+            "ui.showNotification(\"Tags\", \"Title\", \"msg\", true);"
+        ]
+    }
+]
