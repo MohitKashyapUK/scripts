@@ -4,7 +4,7 @@
 Sabse pehle yeh command terminal mein run karein:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/MohitKashyapUK/scripts/main/Shell%20Script/setup.sh | bash
+curl -fsSL https://raw.githubusercontent.com/MohitKashyapUK/scripts/refs/heads/main/Shell%20Scripts/Scripts/mono-audio.sh | bash
 ```
 
 ## 2. HDAJackRetask Setup
