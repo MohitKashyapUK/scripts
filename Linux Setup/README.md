@@ -13,7 +13,7 @@ curl -fsSL https://raw.githubusercontent.com/MohitKashyapUK/scripts/main/Shell%2
 
 2. Open app. On the right side there is an options section, check the 'Show unconnected pins' and 'Advanced override' options.
 
-3. Go to 'Green Headphones, Front Side' section. Under the section there is an option 'Jack detection', set to 'Not preset'.
+3. Go to 'Green Headphones, Front Side' section and check the 'override' option. Under the section there is an option 'Jack detection', set to 'Not preset'.
 
 4. Now, click on 'Apply changes' and then 'Install boot override'.
 
