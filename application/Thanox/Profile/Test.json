@@ -4,7 +4,7 @@
         "description": "",
         "priority": 1,
         "delay": 5000,
-        "condition": "true && pkgName == \"net.one97.paytm\"",
+        "condition": "taskRemoved == true && task.hasTaskFromPackage(pkgName) == false",
         "actions": [
             "!task.hasTaskFromPackage(pkgName) && ui.showShortToast(\"PKG name: \" + pkgName + \"\\nHas task from package: \" + task.hasTaskFromPackage(pkgName) + \"\\nTask removed: \" + taskRemoved + \"\\nActivity created: \" + activityCreated + \"\\nActivity resumed:\" + activityResumed + \"\\nFront Activity Changed: \" + frontActivityChanged);"
         ]
