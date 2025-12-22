@@ -3,6 +3,7 @@
         "name":"Force Stop on Task Removed",
         "description":"Force stops the app instantly when removed from recent tasks. Safe for System Apps.",
         "priority":1,
+        "delay": 1000,
         "condition":"!globalVarOf$whitelist.contains(pkgName) && taskRemoved == true && task.hasTaskFromPackage(pkgName) == false",
         "actions":[
             "ui.showShortToast(\"🛑 Closing \" + thanos.pkgManager.getAppInfo(pkgName).appLabel);",
