@@ -10,3 +10,16 @@
         ]
     }
 ]
+
+[
+    {
+        "name": "Test 2",
+        "description": "",
+        "priority": 1,
+        "delay": 5000,
+        "condition": "true",
+        "actions": [
+            "ui.showShortToast(activity.getFrontAppPackageComponent(\"\"));"
+        ]
+    }
+]
