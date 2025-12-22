@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Run this script using this command:
-# curl -fsSL https://raw.githubusercontent.com/MohitKashyapUK/scripts/main/Shell%20Script/mono-audio.sh | bash
+# curl -fsSL https://raw.githubusercontent.com/MohitKashyapUK/scripts/refs/heads/main/Shell%20Scripts/Scripts/mono-audio.sh | bash
 
 set -e
 
