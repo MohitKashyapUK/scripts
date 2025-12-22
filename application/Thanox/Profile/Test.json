@@ -6,7 +6,7 @@
         "delay": 5000,
         "condition": "true && pkgName == \"net.one97.paytm\"",
         "actions": [
-            "!task.hasTaskFromPackage(pkgName) && ui.showShortToast(\"Task removed: \" + taskRemoved + \"\\nActivity created: \" + activityCreated + \"\\nActivity resumed:\" + activityResumed + \"\\nFront Activity Changed: \" + frontActivityChanged);"
+            "!task.hasTaskFromPackage(pkgName) && ui.showShortToast(\"Has task from package: \" + task.hasTaskFromPackage(pkgName) \"\\nTask removed: \" + taskRemoved + \"\\nActivity created: \" + activityCreated + \"\\nActivity resumed:\" + activityResumed + \"\\nFront Activity Changed: \" + frontActivityChanged);"
         ]
     }
 ]
