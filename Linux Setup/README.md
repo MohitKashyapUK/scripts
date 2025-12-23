@@ -9,7 +9,7 @@ curl -fsSL https://raw.githubusercontent.com/MohitKashyapUK/scripts/refs/heads/m
 
 ## 2. HDAJackRetask Setup
 
-1. HDAJackRetask app download karein [(Process here)](https://github.com/MohitKashyapUK/scripts/blob/main/Linux%20Setup/HDAJackRetask%20Installation.md)
+1. HDAJackRetask app download karein [(Process here)](https://github.com/MohitKashyapUK/scripts/raw/refs/heads/main/Linux%20Setup/HDAJackRetask%20Installation.md)
 
 2. Open app. On the right side there is an options section, check the 'Show unconnected pins' and 'Advanced override' options.
 
