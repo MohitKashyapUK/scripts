@@ -5,8 +5,8 @@
 cd "$HOME" || { echo "Error: Home directory mein nahi ja saka."; exit 1; }
 echo "Working directory set to: $HOME"
 
-# 1. Apna URL yahan dalein
-LIST_URL="https://example.com/my-packages.txt"
+# 1. Package list ka URL
+LIST_URL="https://raw.githubusercontent.com/MohitKashyapUK/scripts/main/Linux%20Setup/Arch%20Linux/pkglist.txt"
 
 # --- Step 1: System Update ---
 echo "System update kar raha hoon..."
