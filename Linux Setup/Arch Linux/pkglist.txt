@@ -3,3 +3,4 @@ github-desktop-plus
 wl-clipboard
 antigravity
 freedownloadmanager
+speedtest-cli
