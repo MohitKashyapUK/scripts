@@ -1,58 +1,61 @@
 #!/bin/bash
 
-# --- Step 0: Base Directory ko HOME par set karna ---
-# Sabse pehle Home folder mein jaayenge taaki permission ka issue na ho
-cd "$HOME" || { echo "Error: Home directory mein nahi ja saka."; exit 1; }
-echo "Working directory set to: $HOME"
+# --- Configuration: Colors ---
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
+CYAN='\033[0;36m'
+NC='\033[0m'
 
-# 1. Package list ka URL
+log_info() { echo -e "${BLUE}[INFO]${NC} $1"; }
+log_error() { echo -e "${RED}[ERROR]${NC} $1"; }
+
+# Error Handling
+handle_error() {
+    log_error "Error at line $1. Installation stopped."
+    exit 1
+}
+trap 'handle_error $LINENO' ERR
+
+# Start
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+LOCAL_PKG_LIST="$SCRIPT_DIR/pkglist.txt"
 LIST_URL="https://raw.githubusercontent.com/MohitKashyapUK/scripts/main/Linux%20Setup/Arch%20Linux/pkglist.txt"
 
-# --- Step 1: System Update ---
-echo "System update kar raha hoon..."
-sudo pacman -Syu --noconfirm
+# --- REMOVED SYSTEM UPDATE SECTION FROM HERE ---
+# The parent script (setup.sh) acts as root and updates the system.
 
-# --- Step 2: Check & Install 'yay' ---
+# 2. Install Yay
 if ! command -v yay &> /dev/null; then
-    echo "'yay' installed nahi hai. Installation shuru kar raha hoon..."
-
-    # 2a. Git aur Base-devel tools install karna
-    sudo pacman -S --needed --noconfirm git base-devel
-
-    # 2b. Yay ko clone karna (Ab ye pakka Home folder mein hoga)
+    log_info "Installing yay..."
+    # We assume base-devel and git are installed by parent script or pre-installed
+    cd "$HOME" || exit 1
+    rm -rf yay
     git clone https://aur.archlinux.org/yay.git
     cd yay
-
-    # 2c. Build aur Install karna
     makepkg -si --noconfirm
-
-    # 2d. Safayi karna aur wapas Home mein aana
-    cd "$HOME"
+    cd ..
     rm -rf yay
-
-    echo "'yay' safalta purvak install ho gaya!"
 else
-    echo "'yay' pehle se installed hai."
+    log_info "yay is already installed."
 fi
 
-# --- Step 3: Fetch Package List ---
-if [ -z "$LIST_URL" ]; then
-    echo "Error: URL set nahi hai."
-    exit 1
+# 3. Install Packages
+if [ -f "$LOCAL_PKG_LIST" ]; then
+    log_info "Using local package list: $LOCAL_PKG_LIST"
+    PACKAGES=$(sed 's/#.*//' "$LOCAL_PKG_LIST" | xargs)
+else
+    log_info "Downloading package list from GitHub..."
+    PACKAGES=$(curl -fsSL "$LIST_URL" | sed 's/#.*//' | xargs)
 fi
-
-echo "URL se package list download kar raha hoon..."
-PACKAGES=$(curl -fsSL "$LIST_URL" | sed 's/#.*//' | xargs)
 
 if [ -z "$PACKAGES" ]; then
-    echo "Error: List khali hai ya download fail ho gayi."
+    log_error "Package list is empty."
     exit 1
 fi
 
-echo "Ye packages install honge: $PACKAGES"
-
-# --- Step 4: Install Applications ---
-echo "Applications install kar raha hoon..."
+log_info "Installing packages: $PACKAGES"
+# yay will ask for password if needed. 
 yay -S --needed --noconfirm $PACKAGES
 
-echo "Sab set hai! Script complete."
+echo -e "${GREEN}Package installation complete!${NC}"

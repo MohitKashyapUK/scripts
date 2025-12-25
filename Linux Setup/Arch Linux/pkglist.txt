@@ -4,3 +4,4 @@ wl-clipboard
 antigravity
 freedownloadmanager
 speedtest-cli
+visual-studio-code-bin
