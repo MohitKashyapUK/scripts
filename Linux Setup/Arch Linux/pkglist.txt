@@ -6,3 +6,4 @@ freedownloadmanager
 speedtest-cli
 visual-studio-code-bin
 android-studio
+at
