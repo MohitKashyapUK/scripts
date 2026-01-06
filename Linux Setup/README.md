@@ -17,7 +17,7 @@ curl -fsSL https://raw.githubusercontent.com/MohitKashyapUK/scripts/refs/heads/m
 
 4. Now, click on 'Apply changes' and then 'Install boot override'.
 
-5. Here is an image ![Image of HDAJackRetask setup](https://github.com/MohitKashyapUK/scripts/blob/579c2c6168fa8bee38b24c7f34264e1894017f1d/Linux%20Setup/image.png)
+5. Here is an image ![Image of HDAJackRetask setup](https://github.com/MohitKashyapUK/scripts/blob/main/Linux%20Setup/image.png)
 
 
 ## 3. Automatic Sleep Disable Karna

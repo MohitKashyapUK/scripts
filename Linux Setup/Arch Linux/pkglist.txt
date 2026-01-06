@@ -1,10 +1,11 @@
 google-chrome
-github-desktop-plus
+github-desktop-plus-bin
 wl-clipboard
 antigravity
 freedownloadmanager
 speedtest-cli
 visual-studio-code-bin
-android-studio
 at
 vlc
+obs-studio
+gparted

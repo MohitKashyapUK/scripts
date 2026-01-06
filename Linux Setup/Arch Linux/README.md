@@ -4,23 +4,21 @@ Is folder mein Arch Linux ke liye essential packages aur complete system setup s
 
 ## 📦 Files
 
-- **`setup.sh`**: Complete setup script (firewall, KDE configuration, packages)
-- **`install-required-packages.sh`**: Packages installation script
+- **`kde-setup.sh`**: Complete setup script (firewall, KDE settings, packages)
+- **`install-packages.sh`**: Packages installation script
+- **`kde-settings-setup.sh`**: KDE Plasma specific settings configuration
 - **`pkglist.txt`**: Essential packages list
 - **`KDE_CONFIGURATION.md`**: KDE Plasma settings documentation
 
-## 🚀 Quick Setup (Recommended)
+## 🚀 Quick Setup (Single Command)
 
-Complete system setup ke liye (firewall + KDE configuration + packages):
+Complete system setup ke liye (firewall + KDE configuration + packages), ye command terminal mein run karein:
 
 ```bash
-# Download and run setup script
-curl -fsSL https://raw.githubusercontent.com/MohitKashyapUK/scripts/main/Linux%20Setup/Arch%20Linux/setup.sh -o setup.sh
-chmod +x setup.sh
-sudo ./setup.sh
+curl -fsSL "https://raw.githubusercontent.com/MohitKashyapUK/scripts/refs/heads/main/Linux%20Setup/Arch%20Linux/kde-setup.sh" | sudo bash
 ```
 
-## 📋 What Does setup.sh Do?
+## 📋 What Does kde-setup.sh Do?
 
 1. **Root Permission Check**: Script ko sudo ke saath run karna zaroori hai
 2. **Firewall Configuration**: KDE Connect ports (1714-1764) ko open karta hai
@@ -49,26 +47,26 @@ Detailed documentation: [KDE_CONFIGURATION.md](./KDE_CONFIGURATION.md)
 Agar sirf packages install karne hain (without firewall/KDE config):
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/MohitKashyapUK/scripts/main/Linux%20Setup/Arch%20Linux/install-required-packages.sh | bash
+curl -fsSL https://raw.githubusercontent.com/MohitKashyapUK/scripts/main/Linux%20Setup/Arch%20Linux/install-packages.sh | bash
 ```
 
 ## 🛠️ Manual Usage
 
 ### Setup Script
 ```bash
-chmod +x setup.sh
-sudo ./setup.sh
+chmod +x kde-setup.sh
+sudo ./kde-setup.sh
 ```
 
 ### Package Installation Script
 ```bash
-chmod +x install-required-packages.sh
-./install-required-packages.sh
+chmod +x install-packages.sh
+./install-packages.sh
 ```
 
 ## 📝 Notes
 
-- `setup.sh` ko **root permissions** ke saath run karna zaroori hai
+- `kde-setup.sh` ko **root permissions** ke saath run karna zaroori hai
 - KDE settings automatically detect aur configure hoti hain
 - **KDE Plasma 5 aur 6 dono supported hain** (script automatically detect karti hai)
 - Agar KDE Plasma nahi hai, to KDE configuration skip ho jati hai

@@ -23,7 +23,7 @@ echo -e "${BLUE}=========================================${NC}\n"
 # 1. Check Root
 if [[ $EUID -ne 0 ]]; then
    log_error "Is script ko root permissions ke saath run karein."
-   log_info "Upyog: sudo ./setup.sh"
+   log_info "Upyog: sudo ./kde-setup.sh"
    exit 1
 fi
 
@@ -36,6 +36,9 @@ if [ "$ACTUAL_USER" == "root" ]; then
 else
     log_info "Actual User Detected: $ACTUAL_USER"
 fi
+
+# Detect Script Directory
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
 # --- Section 1: Firewall ---
 setup_firewall() {
@@ -78,81 +81,32 @@ setup_firewall() {
     esac
 }
 
-# --- Section 2: KDE Plasma Settings ---
-setup_kde() {
-    log_task "KDE Plasma settings check kar raha hoon..."
-
-    if [ "$XDG_CURRENT_DESKTOP" = "KDE" ] || [ "$DESKTOP_SESSION" = "plasma" ] || command -v kwriteconfig6 &>/dev/null || command -v kwriteconfig5 &>/dev/null; then
-        if [ "$ACTUAL_USER" != "root" ]; then
-            log_info "Applying settings for user: $ACTUAL_USER"
-
-            # Execute KDE Configuration directly as Actual User
-            if runuser -l "$ACTUAL_USER" -s /bin/bash <<'EOF'
-                set -e
-                # Detect Command
-                if command -v kwriteconfig6 &>/dev/null; then KC=kwriteconfig6;
-                elif command -v kwriteconfig5 &>/dev/null; then KC=kwriteconfig5;
-                else echo -e "\033[0;31m[ERROR]\033[0m KDE tools not found inside user session"; exit 1; fi
-
-                echo -e "\033[0;34m[INFO]\033[0m Using config tool: $KC"
-
-                # 1. Animation Speed
-                $KC --file kdeglobals --group KDE --key AnimationDurationFactor 0.07
-
-                # 2. Screen Locking
-                $KC --file kscreenlockerrc --group Daemon --key Autolock false
-                $KC --file kscreenlockerrc --group Daemon --key LockOnResume false
-                $KC --file kscreenlockerrc --group Daemon --key Timeout 0
-
-                # 3. Power Management (Plasma 6 Fixed)
-                $KC --file powerdevilrc --group AC --group SuspendAndShutdown --key AutoSuspendAction 0
-                $KC --file powerdevilrc --group AC --group Display --key TurnOffDisplayWhenIdle false
-
-                # 4. Session
-                $KC --file ksmserverrc --group General --key loginMode emptySession
-EOF
-            then
-                log_success "KDE Settings Applied."
-            else
-                log_error "KDE settings apply karne mein error aaya."
-                return 1
-            fi
-
-            # Restart Plasma
-            log_info "Restarting Plasma..."
-            runuser -l "$ACTUAL_USER" -s /bin/bash <<'EOF'
-                if command -v kquitapp6 &>/dev/null; then
-                    kquitapp6 plasmashell 2>/dev/null || true
-                    sleep 2
-                    systemctl --user restart plasma-plasmashell 2>/dev/null || plasmashell 2>/dev/null &
-                elif command -v kquitapp5 &>/dev/null; then
-                    kquitapp5 plasmashell 2>/dev/null || true
-                    sleep 2
-                    kstart5 plasmashell 2>/dev/null &
-                fi
-EOF
-            log_success "Plasma restart signal sent."
-        else
-            log_warning "Root user detected, skipping KDE config."
-        fi
-    else
-        log_warning "KDE Plasma not detected."
-    fi
-}
-
 # --- Section 3: Package Installation ---
 install_packages() {
     log_task "Packages installation setup..."
 
-    SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
-    SCRIPT_NAME="install-required-packages.sh"
+    SCRIPT_NAME="install-packages.sh"
     SCRIPT_FULL_PATH="$SCRIPT_DIR/$SCRIPT_NAME"
     
     # 1. Update System (Running as Root)
-    log_info "Updating system and ensuring base-devel/git (Root)..."
-    pacman -Syu --noconfirm --needed git base-devel
+    log_info "Updating system and ensuring base-devel/git/curl (Root)..."
+    pacman -Syu --noconfirm --needed git base-devel curl
 
-    # 2. Run User Script
+    # Fallback URL
+    REMOTE_URL="https://raw.githubusercontent.com/MohitKashyapUK/scripts/refs/heads/main/Linux%20Setup/Arch%20Linux/install-packages.sh"
+
+    # 2. Check and Download if missing
+    if [ ! -f "$SCRIPT_FULL_PATH" ]; then
+        log_warning "Local script '$SCRIPT_NAME' not found. Trying to download..."
+        if curl -s -o "$SCRIPT_FULL_PATH" "$REMOTE_URL"; then
+            log_success "Script downloaded successfully."
+        else
+            log_error "Failed to download script from $REMOTE_URL"
+            return 1
+        fi
+    fi
+
+    # 3. Run User Script
     if [ -f "$SCRIPT_FULL_PATH" ]; then
         log_info "Local package script found."
 
@@ -169,8 +123,7 @@ install_packages() {
             return 1
         fi
     else
-        log_error "Local script '$SCRIPT_NAME' not found in $SCRIPT_DIR"
-        log_info "Please create the install-required-packages.sh file locally first."
+        log_error "Local script '$SCRIPT_NAME' still not found."
         return 1
     fi
     log_success "Package installation completed."
@@ -178,8 +131,6 @@ install_packages() {
 
 # --- Execution ---
 setup_firewall || log_error "Firewall setup fail ho gaya, par aage badh rahe hain..."
-echo ""
-setup_kde || log_error "KDE setup fail ho gaya, par aage badh rahe hain..."
 echo ""
 install_packages || log_error "Package installation fail ho gaya."
 
