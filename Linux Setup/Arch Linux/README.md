@@ -12,7 +12,7 @@ Is folder mein Arch Linux ke liye essential packages aur complete system setup s
 
 ## 🚀 Quick Setup (Single Command)
 
-Complete system setup ke liye (firewall + KDE configuration + packages), ye command terminal mein run karein:
+Complete system setup ke liye (firewall + packages), ye command terminal mein run karein:
 
 ```bash
 curl -fsSL "https://raw.githubusercontent.com/MohitKashyapUK/scripts/refs/heads/main/Linux%20Setup/Arch%20Linux/kde-setup.sh" | sudo bash
