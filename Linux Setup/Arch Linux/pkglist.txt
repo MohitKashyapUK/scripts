@@ -9,3 +9,4 @@ at
 vlc
 obs-studio
 gparted
+proton-vpn-gtk-app
