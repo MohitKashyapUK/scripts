@@ -2,7 +2,7 @@ google-chrome
 github-desktop-plus-bin
 wl-clipboard
 antigravity
-freedownloadmanager
+freedownloadmanager-bin
 speedtest-cli
 visual-studio-code-bin
 at
