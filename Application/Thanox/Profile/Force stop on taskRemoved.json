@@ -6,7 +6,7 @@
         "condition":"taskRemoved == true && task.hasTaskFromPackage(pkgName) == false && !globalVarOf$whitelist.contains(pkgName) && activity.getFrontAppPackageComponent().getPackageName() != pkgName",
         "actions":[
             "ui.showShortToast(\"🛑 Closing \" + thanos.pkgManager.getAppInfo(pkgName).appLabel);",
-            "sh.exe('am force-stop ' + pkgName)"
+            "sh.exe('am force-stop ' + pkgName);"
         ]
     }
 ]
