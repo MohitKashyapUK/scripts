@@ -1,7 +1,6 @@
-let top_results = "";
-let bottom_results = "";
+let selector = "#root > div > div > div.content--6d02a > div:nth-child(2) > div > div.top-container--67c84.autoFullScreenEnabled--57102 > div.top-right--83089";
 
-let results_array = [...document.querySelector(top_results).innerText.split("\n"), ...document.querySelector(bottom_results).innerText.split("\n")].reverse();
+let results_array = document.querySelector(selector).innerText.split("\n").reverse();
 let results = "";
 
 for (let x = 0; x < results_array.length; x++) {
