@@ -23,7 +23,7 @@ sudo mount /dev/sdXn /mnt
 Agar aapka system UEFI mode mein hai, toh EFI partition ko `/mnt/boot/efi` par mount karein:
 ```bash
 sudo mkdir -p /mnt/boot/efi
-sudo mount /dev/sdX1 /mnt/boot/efi
+sudo mount /dev/sdXn /mnt/boot/efi
 ```
 
 ### 3. System Directories ko Bind karein
