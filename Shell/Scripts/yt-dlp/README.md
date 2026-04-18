@@ -11,7 +11,7 @@
 
 ### Playlist
 ```bash
-yt-dlp --output "%(playlist_title)s/%(title)s.%(ext)s" -f "bv[height<=1080]+ba" --embed-chapters --cookies-from-browser firefox <Playlist_URL>
+yt-dlp --output "%(playlist_title)s/%(title)s.%(ext)s" -f "bv[height<=720]+ba" --embed-chapters --cookies-from-browser firefox <Playlist_URL>
 ```
 
 ### Playlist with subtitle
