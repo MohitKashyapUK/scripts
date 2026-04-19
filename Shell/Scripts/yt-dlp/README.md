@@ -12,22 +12,22 @@
 
 ### Playlist
 ```bash
-yt-dlp --embed-chapters --output "%(playlist_title)s/%(title)s.%(ext)s" --format "bv[height<=720]+ba" --cookies-from-browser firefox <Playlist_URL>
+yt-dlp --embed-chapters --output "%(playlist_title)s/%(title)s.%(ext)s" --format "bv[height<=1080][vcodec!=vp9]+ba" --cookies-from-browser firefox <Playlist_URL>
 ```
 
 ### Playlist with subtitle
 ```bash
-yt-dlp --embed-chapters --output "%(playlist_title)s/%(title)s.%(ext)s" --format "bv[height<=720]+ba" --write-auto-subs --embed-subs --sub-langs en --cookies-from-browser firefox <Playlist_URL>
+yt-dlp --embed-chapters --output "%(playlist_title)s/%(title)s.%(ext)s" --format "bv[height<=1080][vcodec!=vp9]+ba" --write-auto-subs --embed-subs --sub-langs en --cookies-from-browser firefox <Playlist_URL>
 ```
 
 ### Video
 ```bash
-yt-dlp --embed-chapters --no-playlist --output "%(title)s.%(ext)s" --format "bv[height<=720]+ba" --cookies-from-browser firefox <Video_URL>
+yt-dlp --embed-chapters --no-playlist --output "%(title)s.%(ext)s" --format "bv[height<=1080][vcodec!=vp9]+ba" --cookies-from-browser firefox <Video_URL>
 ```
 
 ### Video with subtitles
 ```bash
-yt-dlp --embed-chapters --no-playlist --output "%(title)s.%(ext)s" --format "bv[height<=720]+ba" --write-auto-subs --embed-subs --sub-langs en --cookies-from-browser firefox <Video_URL>
+yt-dlp --embed-chapters --no-playlist --output "%(title)s.%(ext)s" --format "bv[height<=1080][vcodec!=vp9]+ba" --write-auto-subs --embed-subs --sub-langs en --cookies-from-browser firefox <Video_URL>
 ```
 
 ### Print title
