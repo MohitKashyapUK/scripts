@@ -34,3 +34,10 @@ yt-dlp --embed-chapters --no-playlist --output "%(title)s.%(ext)s" --format "bv[
 ```bash
 yt-dlp --skip-download --print title <Video_URL>
 ```
+
+
+*Use this option to get FHD video. Make sure you choose the right codec, otherwise the video will lag.*
+```bash
+... --format "b[height<=1080][vcodec!=vp9]" ...
+... --format "bv[height<=1080][vcodec!=vp9]+ba" ...
+```
