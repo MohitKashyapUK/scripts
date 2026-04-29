@@ -20,7 +20,7 @@ sudo apt install alsa-tools-gui
 Install the `alsa-tools-gui` package using `dnf`:
 
 ```bash
-sudo dnf install alsa-tools-gui
+sudo dnf install alsa-tools
 ```
 
 ---
